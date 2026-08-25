@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: app-publish-server
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/app_publish?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:app_publish}
+    password: ${DB_PASSWORD}
+  servlet:
+    multipart:
+      max-file-size: ${MAX_APK_SIZE:500MB}
+      max-request-size: ${MAX_APK_SIZE:500MB}
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: framework
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:120}
+  bootstrap-admin-password: ${INITIAL_ADMIN_PASSWORD:}
+  storage:
+    endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+    access-key: ${MINIO_ACCESS_KEY}
+    secret-key: ${MINIO_SECRET_KEY}
+    bucket: ${MINIO_BUCKET:app-releases}
+  apk:
+    aapt2-path: ${AAPT2_PATH:aapt2}
+    apksigner-path: ${APKSIGNER_PATH:apksigner}
+  public-base-url: ${PUBLIC_BASE_URL:http://localhost:8080}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
