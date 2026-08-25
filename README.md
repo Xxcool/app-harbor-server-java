@@ -2,7 +2,7 @@
 
 基于 Spring Boot 3、Java 21、MySQL 和 MinIO 实现的安卓 APK 上传、版本管理与下载服务。
 
-> 本仓库是适用于自建服务器的 Java 版本。当前 `app-harbor-43g.pages.dev` 线上环境使用的是独立的 Cloudflare Worker 后端：[Xxcool/app-harbor-api](https://github.com/Xxcool/app-harbor-api)。
+> 本仓库是适用于自建服务器的 Java 版本。当前“芽分发”线上环境使用的是独立的 Cloudflare Worker 后端：[Xxcool/app-harbor-api](https://github.com/Xxcool/app-harbor-api)。
 
 ## 功能
 
